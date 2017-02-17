@@ -1,0 +1,127 @@
+{% load staticfiles%}
+{% csrf_token %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Billboard</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Pinyon+Script|Poiret+One" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/billboard.css' %}">
+
+</head>
+<body>
+<div class="container main-container">
+    <div class="row justify-content-md-center">
+        <div id="post-comments-all" class="col-12-md col-12-xs">
+            <h1 class="page-title title centered">BILLBOARD</h1>
+            {%if post_list%}
+            {%for post in post_list%}
+            <div class="post-comments">
+
+                <div class="billboard-box box">
+                    <div class="date">{{post.date_posted|date:"m/d/Y"}}</div>
+                    <div class="post-title title box-content">{{post.post_title}}</div>
+                    <div class="billboard-text box-content">{{post.post_content}}</div>
+                    <div class="box-footer box-content">
+                        <div class="user-signature posted-sig">{{post.post_author}}</div>
+                    </div>
+                    <button class="btn new-btn btn-billboard show-comments"><i class="fa fa-comments-o"
+                                                                               aria-hidden="true"></i></button>
+
+                </div>
+
+
+                <div class="comments" id="comments_post_{{post.id}}">
+                    <ul class="user-comments-holder">
+                        {%if post.comment_set.all%}
+                        {%for comment in post.comment_set.all%}
+                        <li class="comment-box old-comment box">
+                            <div class="date">{{comment.comment_date|date:"m/d/Y"}}</div>
+                            <div class="billboard-text box-content">{{comment.comment_content}}</div>
+                            <div class="box-footer box-content">
+                                <div class="user-signature posted-sig">{{comment.comment_author}}</div>
+                            </div>
+                        </li>
+                        {%endfor%}
+                    </ul>
+                    {%endif%}
+
+                    <div class="new-comment-form box new-comment comment-box">
+                        <div class="date">{{current_time|date:"m/d/Y"}}</div>
+                        <div class="box-content">
+                            <textarea placeholder="Your comment here" class="box-content new-comment-text"></textarea>
+                        </div>
+                        <div class="box-content box-footer">
+                            <button class="btn cancel-btn btn-billboard cancel-new-comment"><i
+                                    class="fa fa-times"
+                                    aria-hidden="true"></i>
+                            </button>
+                            <button class="btn new-btn btn-billboard send-new-comment" value="{{post.id}}"
+                                    id="{{post.id}}-comment"><i class="fa fa-check"
+                                                                aria-hidden="true"></i>
+                            </button>
+                            <input class='user-signature' placeholder="author" value="" type="text" name="author"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {%endfor%}
+            {%else%}
+            <div id="no-posts" class="no-posts box centered">
+                No messages<br>
+                Click the '+' button to add a new message
+            </div>
+            {%endif%}
+
+        </div>
+        <div class="new-post-holder">
+            <div id="new-post-form" class="new-post-form box">
+                <div class="date">{{current_time|date:"m/d/Y"}}</div>
+                <div class="box-content">
+                    <input placeholder="title" class="new-post-input" value="" type="text" name="title" id="new-post-title">
+                </div>
+                <div class="box-content">
+                    <textarea class="box-content new-post-input" placeholder="Your message here" id="new-post-content"></textarea>
+                </div>
+                <div class="box-content box-footer">
+                    <input class='user-signature new-post-input' placeholder="author" value="" type="text" name="author"
+                           id="new-post-author">
+                </div>
+            </div>
+            <div class="new-post-box box centered">
+                <button id="new-post" class="btn new-btn btn-billboard"><i class="fa fa-plus"
+                                                                           aria-hidden="true"></i></button>
+                <div id="send-cancel-container">
+                    <button id="cancel-new-post" class="btn cancel-btn btn-billboard"><i
+                            class="fa fa-times"
+                            aria-hidden="true"></i>
+                    </button>
+                    <button id="send-new-post" class="btn new-btn btn-billboard"><i class="fa fa-check"
+                                                                                    aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="{% static 'js/billboard.js' %}"></script>
+</body>
+</html>

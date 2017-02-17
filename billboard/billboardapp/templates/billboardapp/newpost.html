@@ -1,0 +1,41 @@
+
+<div class="post-comments">
+                    <div class="billboard-box box">
+                        <div class="date">{{new_post.date_posted|date:"m/d/Y"}}</div>
+                        <div class="post-title title box-content">{{new_post.post_title}}</div>
+                        <div class="billboard-text box-content">{{new_post.post_content}}</div>
+                        <div class="box-footer box-content">
+                            <div class="user-signature posted-sig">{{new_post.post_author}}</div>
+                        </div>
+                        <button class="btn new-btn btn-billboard show-comments"><i class="fa fa-comments-o" aria-hidden="true"></i></button>
+
+                    </div>
+
+
+                <div class="comments" id="comments_post_{{new_post.id}}">
+
+                    <ul class="user-comments-holder">
+
+                    </ul>
+
+
+                    <div class="new-comment-form box new-comment comment-box">
+                        <div class="date">{{current_time|date:"m/d/Y"}}</div>
+                        <div class="box-content">
+                            <textarea class="box-content new-comment-text"></textarea>
+                        </div>
+                        <div class="box-content box-footer">
+                            <button class="btn cancel-btn btn-billboard cancel-new-comment"><i
+                                    class="fa fa-times"
+                                    aria-hidden="true"></i>
+                            </button>
+                            <button class="btn new-btn btn-billboard send-new-comment" value="{{new_post.id}}" id="{{new_post.id}}-comment"><i class="fa fa-check"
+                                                                                          aria-hidden="true"></i>
+                            </button>
+                            <input class='user-signature' placeholder="author" value="" type="text" name="author"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                </div>
