@@ -1,0 +1,184 @@
+/*font-family: 'Poiret One', cursive;
+font-family: 'Anton', sans-serif;
+font-family: 'Pinyon Script', cursive;
+*/
+
+/*Higher-level Stuff*/
+.title{
+	font-family: 'Anton', sans-serif;
+}
+
+ul{
+	list-style: none;
+	padding: 0;
+}
+
+h1.page-title{
+	margin-bottom:3%;
+	font-size: 40px;
+}
+
+.main-container{
+	margin-top:5%;
+}
+
+.no-posts{
+font-family: arial;
+font-size: 24px;
+}
+
+/*Date*/
+.date{
+	position: absolute;
+	font-family: 'Poiret One', cursive;
+	font-size: 16;
+	background-color: white;
+	top:-10%;
+	left:5%;
+
+}
+
+/*Generic Billboard Elements*/
+
+.centered{
+	text-align: center;
+}
+
+.box{
+	max-width: 800px;
+	width:100%;
+	height:auto;
+	margin: 3% auto;
+	position:relative;
+}
+
+.box-footer{
+	height:20px;
+	width:auto;
+	position: relative;
+}
+
+.box-content{
+	margin:2%;
+	max-width: 100%;
+	width:auto;
+	position: relative;
+}
+
+.user-signature{
+	display: inline-block;
+	right:0;
+	bottom:0;
+	position: absolute;
+}
+
+.btn-billboard{
+	color:white;
+	width:10%;
+	margin:1%;
+	min-width: 70px;
+}
+
+.new-btn{
+	background-color: #66CDAA;
+}
+
+.cancel-btn{
+	background-color: red;
+}
+
+/*Old Post Elements*/
+
+.post-title{
+	color: #00b7ef;
+	font-size: 30px;
+}
+
+.billboard-box{
+	border: 3px solid #00b7ef; 	
+}
+
+.billboard-text{
+	font-family: Arial;
+	font-size: 16px;
+	color:#c1bfc0;
+	word-wrap: normal;
+	word-break:break-all;
+	line-height: 95%;
+}
+
+.posted-sig{
+	font-family: 'Pinyon Script', cursive;
+	font-size: 24px;
+}
+
+/*New Post Elements*/
+
+.new-post-box{
+	border: 1px dashed black;
+	font-size: 16px;
+}
+
+.new-post-form{
+	border: 3px dashed #00b7ef;
+}
+
+textarea.box-content{
+	height:100px;
+	width:100%;
+	margin:0;
+}
+
+
+/*Comments*/
+.comment-box{
+    max-width: 700px;
+}
+
+.new-comment{
+    border: 3px dashed black;
+}
+
+.old-comment{
+    border: 3px solid black;
+}
+
+.cancel-new-comment,.send-new-comment{
+    margin:0;
+    vertical-align:middle;
+}
+
+/*Media Queries for better responsive margins*/
+@media screen and (max-width: 300px) {
+    .box {
+        margin:5% auto;
+    }
+    .box-content{
+	margin:6%;
+}
+}
+/*Button Animation*/
+
+@keyframes pulse_animation {
+	0% { transform: scale(1); }
+	10% { transform: scale(1.5); }
+	20% { transform: scale(1); }
+	30% { transform: scale(1.5); }
+	40% { transform: scale(1); }
+	50% { transform: scale(1.5); }
+	60% { transform: scale(1); }
+	70% { transform: scale(1.5); }
+	80% { transform: scale(1); }
+	100% { transform: scale(1.5); }
+}
+
+.pulse {
+	animation-name: pulse_animation;
+	animation-duration: 2000ms;
+	transform-origin:20% 70%;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+
+
